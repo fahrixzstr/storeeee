@@ -1,0 +1,76 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+
+    <!-- Pink Gradient -->
+    <linearGradient id="pinkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF006A"/>
+      <stop offset="100%" stop-color="#B026FF"/>
+    </linearGradient>
+
+    <!-- Blue Gradient -->
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00E1FF"/>
+      <stop offset="100%" stop-color="#2563FF"/>
+    </linearGradient>
+
+    <!-- Pink Glow -->
+    <filter id="pinkGlow">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Blue Glow -->
+    <filter id="blueGlow">
+      <feGaussianBlur stdDeviation="14" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+  </defs>
+
+  <!-- LETTER F -->
+  <g filter="url(#pinkGlow)">
+    <path
+      d="
+      M120 620
+      L250 320
+      H600
+      L555 385
+      H360
+      L325 445
+      H530
+      L490 505
+      H285
+      Z"
+      fill="url(#pinkGradient)"
+    />
+  </g>
+
+  <!-- LETTER Z -->
+  <g filter="url(#blueGlow)">
+    <path
+      d="
+      M300 430
+      H690
+      L635 500
+      H450
+      L405 560
+      H660
+      L545 645
+      H250
+      L210 605
+      H400
+      L445 545
+      H270
+      Z"
+      fill="url(#blueGradient)"
+    />
+  </g>
+
+</svg>
