@@ -87,8 +87,13 @@
   <script>
     // Render products on load
     document.addEventListener('DOMContentLoaded', () => {
-      renderProducts(products);
-    });
+  renderProducts(products);
+
+  const skeleton = document.getElementById('skeletonLoader');
+  if (skeleton) {
+    skeleton.remove();
+  }
+});
 
     document.getElementById('orderModal').addEventListener('click', (e) => {
       if (e.target === document.getElementById('orderModal')) closeOrderModal();
