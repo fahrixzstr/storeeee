@@ -1,10 +1,7 @@
 name: Build APK
 
 on:
-<<<<<<< HEAD
-=======
   workflow_dispatch:
->>>>>>> 99627b5b9f69e05192f865ca7292eb88dae4f68d
   push:
     branches:
       - main
@@ -16,25 +13,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 17
 
-<<<<<<< HEAD
-      - uses: android-actions/setup-android@v3
-
-=======
->>>>>>> 99627b5b9f69e05192f865ca7292eb88dae4f68d
       - run: npm install
 
       - run: npx cap sync android
 
-<<<<<<< HEAD
-      - run: cd android && ./gradlew assembleDebug
-=======
       - run: cd android && chmod +x gradlew && ./gradlew assembleDebug
->>>>>>> 99627b5b9f69e05192f865ca7292eb88dae4f68d
 
       - uses: actions/upload-artifact@v4
         with:
