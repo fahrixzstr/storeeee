@@ -179,7 +179,7 @@ const products = [
     category: 'bank',
     badge: 'Trending',
     desc: 'Aktivasi Rekeningi',
-    image: 'assets/image/products/dana.jpg',
+    image: 'assets/image/products/jago.jpg',
     rating: 4.9,
     reviews: 29871
   },
@@ -1455,7 +1455,12 @@ function renderProducts(productList) {
         </button>
       </div>
     </div>
-  `).join('');
+`).join('');
+
+  const skeleton = document.getElementById('skeletonLoader');
+  if (skeleton) {
+    skeleton.style.display = 'none';
+  }
 }
 
 // Filter Products
