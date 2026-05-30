@@ -1541,7 +1541,7 @@ function closeOrderModal() {
 }
 
 function sendOrderToWhatsApp() {
-  const adminNumber = '6281234567890';
+  const adminNumber = '6285609949819';
   const message = encodeURIComponent(
     `📦 *PESANAN BARU*\n\n` +
     `🛒 Produk : ${currentOrder.name}\n` +
