@@ -34,10 +34,10 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link to="/" className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">F</span>
-              </div>
-              <span className="font-bold">FahriXz Store</span>
+          <Link to="/admin" className="flex items-center gap-2">
+            <img src="/logo.svg" alt="FahriXz Store" className="w-8 h-8 rounded-lg object-contain" />
+            <div>
+              <span className="font-bold text-sm">FahriXz Store</span>
             </Link>
             <p className="text-sm text-muted-foreground mb-4">
               Marketplace produk digital terpercaya. Temukan software, template, dan asset digital berkualitas.
@@ -45,7 +45,7 @@ export default function Footer() {
             <div className="space-y-2 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
-                <span>fahriandriansaputraa@gmail.com</span>
+                <span>fahrixzstore@gmail.com</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
