@@ -1,10 +1,11 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import UserLayout from '@/components/layout/UserLayout';
 import AdminLayout from '@/components/layout/AdminLayout';
 import useStore from '@/stores/useStore';
 import authService from '@/services/auth';
 import { Toaster } from '@/components/ui/sonner';
+import { auth } from '@/lib/firebase';
 
 // Lazy load pages
 const Home = lazy(() => import('@/pages/Home'));
@@ -53,15 +54,39 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
 // Admin route wrapper
 function AdminRoute({ children }: { children: React.ReactNode }) {
-  // Admin accessible via secret login (5 logo clicks)
-  // For now, we allow access to admin panel
   return <>{children}</>;
+}
+
+// Firebase not initialized warning
+function FirebaseError() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-background p-4">
+      <div className="max-w-md text-center space-y-4">
+        <div className="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mx-auto">
+          <span className="text-red-500 text-2xl">⚠️</span>
+        </div>
+        <h1 className="text-xl font-bold">Firebase Belum Terkonfigurasi</h1>
+        <p className="text-muted-foreground text-sm">
+          Tambahkan environment variables Firebase di Vercel Dashboard:
+        </p>
+        <div className="bg-muted rounded-lg p-3 text-left text-xs font-mono space-y-1">
+          <p>VITE_FIREBASE_API_KEY=...</p>
+          <p>VITE_FIREBASE_AUTH_DOMAIN=...</p>
+          <p>VITE_FIREBASE_PROJECT_ID=...</p>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 function AuthInitializer({ children }: { children: React.ReactNode }) {
   const { setUser, setLoading } = useStore();
 
   useEffect(() => {
+    if (!auth) {
+      setLoading(false);
+      return;
+    }
     setLoading(true);
     const unsubscribe = authService.onAuthChange((user) => {
       setUser(user);
@@ -74,6 +99,12 @@ function AuthInitializer({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  const [firebaseReady] = useState(true);
+
+  if (!firebaseReady) {
+    return <FirebaseError />;
+  }
+
   return (
     <AuthInitializer>
       <Suspense fallback={<PageLoader />}>
