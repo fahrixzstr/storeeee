@@ -1,11 +1,16 @@
-import { defineConfig } from 'vite'
+import path from "path"
 import react from "@vitejs/plugin-react"
 
-export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? '/fahrixzstorep/' : './',
-  plugins: [
-    react(),
-    mode === 'development' ? inspectAttr() : null,
-  ].filter(Boolean),
-  resolve: { ... }
-}))
+// https://vite.dev/config/
+export default defineConfig({
+  base: './fahrixzstorep',
+  plugins: [inspectAttr(), react()],
+  server: {
+    port: 3000,
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+});
